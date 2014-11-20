@@ -280,13 +280,8 @@ public class ThreadFragment extends Fragment implements ThreadManager.ThreadMana
         } else if (viewMode == ThreadManager.ViewMode.GRID) {
             GridView grid = new GridView(baseActivity);
             grid.setNumColumns(GridView.AUTO_FIT);
-            TypedArray ta = baseActivity.obtainStyledAttributes(null, R.styleable.PostView, R.attr.post_style, 0);
-            int postGridWidth = ta.getDimensionPixelSize(R.styleable.PostView_grid_width, 0);
-            int postGridSpacing = ta.getDimensionPixelSize(R.styleable.PostView_grid_spacing, 0);
-            ta.recycle();
+            int postGridWidth = baseActivity.getResources().getDimensionPixelSize(R.dimen.post_grid_width);
             grid.setColumnWidth(postGridWidth);
-            grid.setVerticalSpacing(postGridSpacing);
-            grid.setHorizontalSpacing(postGridSpacing);
             listView = grid;
             postAdapter = new PostAdapter(baseActivity, threadManager, listView, this);
             listView.setAdapter(postAdapter);
